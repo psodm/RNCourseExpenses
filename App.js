@@ -29,7 +29,6 @@ function ExpensesOverview() {
         name="RecentExpenses"
         component={RecentExpensesScreen}
         options={{
-          headerShown: false,
           title: "Recent Expenses",
           tabBarLabel: "Recent",
           tabBarIcon: ({color, size}) => (
@@ -38,7 +37,7 @@ function ExpensesOverview() {
         }}
       />
       <Tab.Screen name="AllExpenses" component={AllExpensesScreen} options={{
-          title: "AllExpenses",
+          title: "All Expenses",
           tabBarLabel: "All",
           tabBarIcon: ({color, size}) => (
             <Ionicons name="calendar" size={size} color={color} />
@@ -54,7 +53,7 @@ export default function App() {
       <StatusBar style="auto" />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="ExpensesOverview" component={ExpensesOverview} />
+          <Stack.Screen name="ExpensesOverview" component={ExpensesOverview} options={{headerShown: false}}/>
           <Stack.Screen name="ManageExpense" component={ManageExpenseScreen} />
         </Stack.Navigator>
       </NavigationContainer>
