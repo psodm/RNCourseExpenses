@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useLayoutEffect } from "react";
-import IconButton from "../components/ui/IconButton";
+import { StyleSheet, View } from "react-native";
+import React, { useContext, useLayoutEffect } from "react";
+import IconButton from "../components/UI/IconButton";
 import { GlobalStyles } from "../constants/styles";
 import Button from "../components/UI/Button";
+import { ExpensesContext } from "../store/expenses-context";
 
 const ManageExpenseScreen = ({ route, navigation }) => {
+  const expensesContext = useContext(ExpensesContext);
   const editedExpenseId = route.params?.expenseId;
   const isEditing = !!editedExpenseId;
 
@@ -15,6 +17,7 @@ const ManageExpenseScreen = ({ route, navigation }) => {
   }, [navigation, isEditing]);
 
   function deleteExpenseHandler() {
+    expensesContext.deleteExpense(editedExpenseId);
     navigation.goBack();
   }
 
@@ -23,6 +26,19 @@ const ManageExpenseScreen = ({ route, navigation }) => {
   }
 
   function confirmHandler() {
+    if (isEditing) {
+      expensesContext.updateExpense(editedExpenseId, {
+        description: "test!!!",
+        amount: "229.99",
+        date: new Date("2024-11-29"),
+      });
+    } else {
+      expensesContext.addExpense({
+        description: "test",
+        amount: "19.99",
+        date: new Date("2024-11-30"),
+      });
+    }
     navigation.goBack();
   }
 

@@ -7,7 +7,7 @@ import RecentExpensesScreen from "./screens/RecentExpensesScreen";
 import AllExpensesScreen from "./screens/AllExpensesScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "./constants/styles";
-import IconButton from "./components/ui/IconButton";
+import IconButton from "./components/UI/IconButton";
 import ExpensesContextProvider from "./store/expenses-context";
 
 const Stack = createNativeStackNavigator();
@@ -68,7 +68,7 @@ function ExpensesOverview() {
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
