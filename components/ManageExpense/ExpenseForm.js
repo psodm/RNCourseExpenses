@@ -59,6 +59,7 @@ const ExpenseForm = ({
           },
         };
       });
+      return;
     }
     onSubmit(expenseData);
   }
